@@ -1,2 +1,6 @@
-public class Reminder {
+public class Reminder extends Task{
+//Isla
+    public Reminder(){
+
+    }
 }

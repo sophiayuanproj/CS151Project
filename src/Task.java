@@ -1,19 +1,43 @@
-public class Task {
+public class Task implements TaskInterface {
     private String theName;
     private String theDescription;
-    private String theType;
+    private String thePriority;
     private int startDate;
     private int endDate;
     private boolean theStatus;
-
-    public Task(String name, String description, String type, int start, int end, boolean status){
+    //sophia yuan
+    public Task(String name, String description, String priority, int start, int end, boolean status) {
         theName = name;
         theDescription = description;
-        theType = type;
+        thePriority = priority;
         startDate = start;
         endDate = end;
         theStatus = status;
     }
+    //add get methods
 
+    public void changeName(String s) {
+
+    }
+
+    public void changeDescription(String s) {
+
+    }
+
+    public void changePriority(String s) {
+
+    }
+
+    public void changeStart(double d) {
+
+    }
+
+    public void changeEnd(double d) {
+
+    }
+
+    public boolean changeStatus(boolean b) {
+
+    }
 
 }

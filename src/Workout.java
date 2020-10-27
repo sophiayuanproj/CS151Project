@@ -1,5 +1,5 @@
-public class Workout {
-
+public class Workout extends Task {
+//Daniela
     public Workout()
     {
 
