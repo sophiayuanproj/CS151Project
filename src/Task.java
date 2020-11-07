@@ -1,9 +1,12 @@
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Author @Team 7
  * Task class that models a task
  */
 
-public class Task implements TaskInterface {
+public class Task extends JComponent{
     private String theName;
     private String theDescription;
     private String thePriority;
@@ -136,6 +139,14 @@ public class Task implements TaskInterface {
      */
     public void changeStatus(boolean b) {
         theStatus = b;
+    }
+
+    @Override
+    public String toString()
+    {
+        String s = "Name: " + theName + " Description: " + theDescription + " Priority: " + thePriority
+                + " Start Date: " + startDate + " End Date: " + endDate + " Status: " + theStatus;
+        return s;
     }
 
 }
