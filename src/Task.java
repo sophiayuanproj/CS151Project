@@ -34,6 +34,14 @@ public class Task extends JComponent{
     }
 
     /**
+     * Inserted by Isla
+     * Blank Constructor
+     */
+    public Task(){
+
+    }
+
+    /**
      * Gets the name of the task
      *
      * @return the name of the task
