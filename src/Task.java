@@ -24,6 +24,10 @@ public class Task extends JComponent{
      * @param end         is the end date for the task
      * @param status      is the status of the task
      */
+
+    public Task()
+    {}
+
     public Task(String name, String description, String priority, int start, int end, boolean status) {
         theName = name;
         theDescription = description;
