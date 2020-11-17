@@ -1,19 +1,25 @@
+package ProjectPackage;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //manages and stores taskManager objects
-//Isla
-public class ToDoListSystem extends JFrame {
-    public static void main(String[] args) throws InterruptedException {
+//Isla, Sophia, Danlei (Daniela)
+public class ToDoListView extends JFrame {
 
+    /**
+     * Counter for the space between each task's rectangle
+     */
+    private int counter = 120;
+    public ToDoListView() {
         JFrame frame = new JFrame("To-Do List");
 
-        //Sort, Rewards, and Add/Edit buttons
+        //Sort, Rewards, and Add buttons
         JButton sortView = new JButton("Sort View");
         JButton rewards = new JButton("Rewards");
-        JButton editTask = new JButton("Add/Edit");
+        JButton editTask = new JButton("Add");
 
         //Set Bounds
         sortView.setBounds(550, 20, 100, 50);
@@ -31,9 +37,8 @@ public class ToDoListSystem extends JFrame {
         frame.add(editTask);
         frame.add(tasks);
 
-
-        //Task Buttons
-        Task task1 = new Task("Task 1", "a", "a", 1, 2, true);
+        //Test Task Buttons
+        /*Task task1 = new Task("Task 1", "a", "a", 1, 2, true);
         JButton taskButton1 = new JButton(task1.toString());
         taskButton1.setBounds(50, 120, 700, 100);
 
@@ -52,12 +57,10 @@ public class ToDoListSystem extends JFrame {
         frame.add(taskButton1);
         frame.add(taskButton2);
         frame.add(taskButton3);
-        frame.add(taskButton4);
-
-
+        frame.add(taskButton4);*/
 
         frame.setSize(900, 800);
-        frame.getContentPane().setBackground(Color.pink);
+        //frame.getContentPane().setBackground(Color.lightGray);
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -80,7 +83,7 @@ public class ToDoListSystem extends JFrame {
                 rewards.add(reward);
 
                 rewards.setSize(900, 800);
-                rewards.getContentPane().setBackground(Color.pink);
+                //rewards.getContentPane().setBackground(Color.pink);
                 rewards.setLayout(null);
                 rewards.setVisible(true);
 
@@ -94,12 +97,14 @@ public class ToDoListSystem extends JFrame {
         });
 
         editTask.addActionListener(new ActionListener() {
+            JButton t = new JButton();
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame editTask = new JFrame("Edit");
 
                 //Header buttons Add/Update and Back
                 JButton addUpdate = new JButton("Add/Update");
+
                 JButton back = new JButton("Back");
                 JButton title = new JButton("Task View");
 
@@ -152,9 +157,8 @@ public class ToDoListSystem extends JFrame {
                 editTask.add(endDateField);
 
 
-
                 editTask.setSize(900, 800);
-                editTask.getContentPane().setBackground(Color.pink);
+                //editTask.getContentPane().setBackground(Color.pink);
                 editTask.setLayout(null);
                 editTask.setVisible(true);
 
@@ -165,6 +169,23 @@ public class ToDoListSystem extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         editTask.dispose();
                     }
+                });
+
+                /**
+                 * Adds the new tasks
+                 * Evertime a new one is added, the counter int will increment
+                 * so the task rectangles won't overlap
+                 */
+                addUpdate.addActionListener(event ->
+                {
+                    Task temp = new Task(nameField.getText(), descriptionField.getText(),
+                                 priorityField.getText(), Integer.parseInt(startDateField.getText()),
+                                    Integer.parseInt(endDateField.getText()), true);
+                    t = new JButton(temp.toString());
+                    t.setBounds(50, counter, 700, 100);
+                    frame.add(t);
+                    counter+= 120;
+                    System.out.println("Created new task");
                 });
             }
         });
@@ -198,7 +219,7 @@ public class ToDoListSystem extends JFrame {
                 sortView.add(byType);
 
                 sortView.setSize(900, 800);
-                sortView.getContentPane().setBackground(Color.pink);
+                //sortView.getContentPane().setBackground(Color.pink);
                 sortView.setLayout(null);
                 sortView.setVisible(true);
 
@@ -208,6 +229,5 @@ public class ToDoListSystem extends JFrame {
                 });
             }
         });
-
     }
 }

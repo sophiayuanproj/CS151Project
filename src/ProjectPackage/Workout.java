@@ -1,3 +1,7 @@
+package ProjectPackage;
+
+import ProjectPackage.Task;
+
 public class Workout extends Task {
 //Daniela
     public Workout(String name, String description, String priority, int start, int end, boolean status) {
