@@ -1,3 +1,5 @@
+package ProjectPackage;
+
 /**
  * Author @Group 7
  * Interface for all tasks

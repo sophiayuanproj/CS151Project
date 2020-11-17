@@ -1,9 +1,11 @@
+package ProjectPackage;
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Author @Team 7
  * Task class that models a task
+ * Author @Team 7
  */
 
 public class Task extends JComponent{
@@ -24,6 +26,13 @@ public class Task extends JComponent{
      * @param end         is the end date for the task
      * @param status      is the status of the task
      */
+
+    /**
+     * Created for Isla
+     */
+    public Task()
+    {}
+
     public Task(String name, String description, String priority, int start, int end, boolean status) {
         theName = name;
         theDescription = description;
@@ -152,8 +161,8 @@ public class Task extends JComponent{
     @Override
     public String toString()
     {
-        String s = "Name: " + theName + " Description: " + theDescription + " Priority: " + thePriority
-                + " Start Date: " + startDate + " End Date: " + endDate + " Status: " + theStatus;
+        String s = "Name: " + theName + "  Description: " + theDescription + "  Priority: " + thePriority
+                + "  Start Date: " + startDate + "  End Date: " + endDate + "  Status: " + theStatus;
         return s;
     }
 
