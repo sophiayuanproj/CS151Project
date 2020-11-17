@@ -4,11 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 //manages and stores taskManager objects
 //Isla, Sophia, Danlei (Daniela)
 public class ToDoListView extends JFrame {
 
+    //List to be used in TaskManager
+    public ArrayList<Task> currentList = new ArrayList<>();
     /**
      * Counter for the space between each task's rectangle
      */
@@ -184,6 +187,10 @@ public class ToDoListView extends JFrame {
                     t = new JButton(temp.toString());
                     t.setBounds(50, counter, 700, 100);
                     frame.add(t);
+                    currentList.add(temp);
+                    TaskManager tm = new TaskManager(currentList);
+                    //testing TaskManager
+                    tm.printArrayList();
                     counter+= 120;
                     System.out.println("Created new task");
                 });
