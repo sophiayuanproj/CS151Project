@@ -16,6 +16,7 @@ public class ToDoListView extends JFrame {
      * Counter for the space between each task's rectangle
      */
     private int counter = 120;
+
     public ToDoListView() {
         JFrame frame = new JFrame("To-Do List");
 
@@ -30,7 +31,7 @@ public class ToDoListView extends JFrame {
         editTask.setBounds(750, 20, 100, 50);
 
         //Tasks Title
-        JButton tasks = new JButton("Tasks");
+        JLabel tasks = new JLabel("Tasks");
         tasks.setBounds(50, 50, 150, 50);
         tasks.setFont(new Font("Arial", Font.PLAIN, 28));
 
@@ -74,7 +75,7 @@ public class ToDoListView extends JFrame {
 
                 JButton history = new JButton("History");
                 JButton back = new JButton("Back");
-                JButton reward = new JButton("Rewards");
+                JLabel reward = new JLabel("Reward");
 
                 history.setBounds(550, 20, 100, 50);
                 back.setBounds(650, 20, 100, 50);
@@ -101,6 +102,7 @@ public class ToDoListView extends JFrame {
 
         editTask.addActionListener(new ActionListener() {
             JButton t = new JButton();
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame editTask = new JFrame("Edit");
@@ -109,7 +111,7 @@ public class ToDoListView extends JFrame {
                 JButton addUpdate = new JButton("Add/Update");
 
                 JButton back = new JButton("Back");
-                JButton title = new JButton("Task View");
+                JLabel title = new JLabel("Task View");
 
                 addUpdate.setBounds(550, 20, 100, 50);
                 back.setBounds(650, 20, 100, 50);
@@ -129,7 +131,7 @@ public class ToDoListView extends JFrame {
 
                 //set bounds of buttons
                 name.setBounds(50, 150, 100, 50);
-                description.setBounds(50, 220, 100,50);
+                description.setBounds(50, 220, 100, 50);
                 priority.setBounds(50, 290, 100, 50);
                 startDate.setBounds(50, 360, 100, 50);
                 endDate.setBounds(50, 430, 100, 50);
@@ -148,7 +150,7 @@ public class ToDoListView extends JFrame {
                 JTextField endDateField = new JTextField();
 
                 nameField.setBounds(200, 150, 500, 50);
-                descriptionField.setBounds(200, 220, 500,50);
+                descriptionField.setBounds(200, 220, 500, 50);
                 priorityField.setBounds(200, 290, 500, 50);
                 startDateField.setBounds(200, 360, 500, 50);
                 endDateField.setBounds(200, 430, 500, 50);
@@ -176,23 +178,37 @@ public class ToDoListView extends JFrame {
 
                 /**
                  * Adds the new tasks
-                 * Evertime a new one is added, the counter int will increment
+                 * Everytime a new one is added, the counter int will increment
                  * so the task rectangles won't overlap
                  */
                 addUpdate.addActionListener(event ->
                 {
-                    Task temp = new Task(nameField.getText(), descriptionField.getText(),
-                                 priorityField.getText(), Integer.parseInt(startDateField.getText()),
-                                    Integer.parseInt(endDateField.getText()), true);
-                    t = new JButton(temp.toString());
-                    t.setBounds(50, counter, 700, 100);
-                    frame.add(t);
-                    currentList.add(temp);
-                    TaskManager tm = new TaskManager(currentList);
-                    //testing TaskManager
-                    tm.printArrayList();
-                    counter+= 120;
-                    System.out.println("Created new task");
+                    Double start;
+                    Double end;
+                    try {
+                        start = Double.parseDouble(startDateField.getText());
+                        end = Double.parseDouble(endDateField.getText());
+                        Task temp = new Task(nameField.getText(), descriptionField.getText(),
+                                priorityField.getText(), start, end, true);
+
+                        t = new JButton(temp.toString());
+                        t.setBounds(50, counter, 700, 100);
+                        frame.add(t);
+
+                        currentList.add(temp);
+                        TaskManager tm = new TaskManager(currentList);
+                        //testing TaskManager
+                        tm.printArrayList();
+                        counter += 120;
+                        System.out.println("Created new task");
+                    } catch (NumberFormatException numberFormatException) {
+                        numberFormatException.printStackTrace();
+                        JFrame errorMessage = new JFrame();
+                        JLabel error = new JLabel("Please enter the date in the format mm.dd.", SwingConstants.CENTER);
+                        errorMessage.add(error);
+                        errorMessage.setSize(500, 200);
+                        errorMessage.setVisible(true);
+                    }
                 });
             }
         });
@@ -203,7 +219,7 @@ public class ToDoListView extends JFrame {
                 JFrame sortView = new JFrame();
 
                 //Header, button Back, sort by priority, date, status, type
-                JButton sortingType = new JButton("Sort View");
+                JLabel sortingType = new JLabel("Sort View");
                 JButton back = new JButton("Back");
                 JButton byPriority = new JButton("By Priority");
                 JButton byDate = new JButton("By Date");
@@ -212,7 +228,7 @@ public class ToDoListView extends JFrame {
 
                 back.setBounds(650, 20, 100, 50);
                 byPriority.setBounds(200, 150, 500, 50);
-                byDate.setBounds(200, 220, 500,50);
+                byDate.setBounds(200, 220, 500, 50);
                 byStatus.setBounds(200, 290, 500, 50);
                 byType.setBounds(200, 360, 500, 50);
                 sortingType.setBounds(50, 50, 150, 50);

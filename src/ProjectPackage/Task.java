@@ -1,7 +1,6 @@
 package ProjectPackage;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Task class that models a task
@@ -33,7 +32,7 @@ public class Task extends JComponent{
     public Task()
     {}
 
-    public Task(String name, String description, String priority, int start, int end, boolean status) {
+    public Task(String name, String description, String priority, double start, double end, boolean status) {
         theName = name;
         theDescription = description;
         thePriority = priority;
