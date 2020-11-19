@@ -63,6 +63,13 @@ public class ToDoListView extends JFrame {
         frame.add(taskButton3);
         frame.add(taskButton4);*/
 
+        /*
+        JPanel panel = new JPanel();
+        JScrollPane jsp = new JScrollPane(panel);
+        jsp.setVerticalScrollBarPolicy(jsp.VERTICAL_SCROLLBAR_ALWAYS);
+        frame.getContentPane().add(jsp, BorderLayout.EAST);
+        */
+
         frame.setSize(900, 800);
         //frame.getContentPane().setBackground(Color.lightGray);
         frame.setLayout(null);
@@ -108,17 +115,17 @@ public class ToDoListView extends JFrame {
                 JFrame editTask = new JFrame("Edit");
 
                 //Header buttons Add/Update and Back
-                JButton addUpdate = new JButton("Add/Update");
+                JButton add = new JButton("Add");
 
                 JButton back = new JButton("Back");
                 JLabel title = new JLabel("Task View");
 
-                addUpdate.setBounds(550, 20, 100, 50);
+                add.setBounds(550, 20, 100, 50);
                 back.setBounds(650, 20, 100, 50);
                 title.setBounds(50, 50, 150, 50);
                 title.setFont(new Font("Arial", Font.PLAIN, 28));
 
-                editTask.add(addUpdate);
+                editTask.add(add);
                 editTask.add(back);
 
                 //"Body" of the Panel
@@ -169,6 +176,74 @@ public class ToDoListView extends JFrame {
 
 
                 //click on back, return to homepage
+                add.addActionListener(event ->
+                {
+                    System.out.println("0");
+                    Double start;
+                    Double end;
+                    try {
+                        start = Double.parseDouble(startDateField.getText());
+                        end = Double.parseDouble(endDateField.getText());
+                        Task temp = new Task(nameField.getText(), descriptionField.getText(),
+                                priorityField.getText(), start, end, true);
+
+                        t = new JButton(temp.toString());
+                        t.setBounds(50, counter, 700, 100);
+
+                        frame.add(t);
+
+                        t.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                //System.out.println("Updated");
+                                editTask.setVisible(true);
+                                editTask.remove(add);
+                                JButton update = new JButton("Update");
+                                update.setBounds(550, 20, 100, 50);
+                                editTask.add(update);
+                                editTask.repaint();
+
+                                update.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        temp.changeName(nameField.getText());
+                                        temp.changeDescription(descriptionField.getText());
+                                        temp.changePriority(priorityField.getText());
+
+                                        try {
+                                            temp.changeStart(Double.parseDouble(startDateField.getText()));
+                                            temp.changeEnd(Double.parseDouble(endDateField.getText()));
+                                        }catch (NumberFormatException numberFormatException) {
+                                            numberFormatException.printStackTrace();
+                                            JFrame errorMessage = new JFrame();
+                                            JLabel error = new JLabel("Please enter the date in the format mm.dd.", SwingConstants.CENTER);
+                                            errorMessage.add(error);
+                                            errorMessage.setSize(500, 200);
+                                            errorMessage.setVisible(true);
+                                        }
+                                        t.setText(temp.toString());
+                                        t.revalidate();
+                                    }
+                                });
+                            }
+                        });
+
+                        currentList.add(temp);
+                        TaskManager tm = new TaskManager(currentList);
+                        //testing TaskManager
+                        tm.printArrayList();
+                        counter += 120;
+                        System.out.println("Created new task");
+
+                    } catch (NumberFormatException numberFormatException) {
+                        numberFormatException.printStackTrace();
+                        JFrame errorMessage = new JFrame();
+                        JLabel error = new JLabel("Please enter the date in the format mm.dd.", SwingConstants.CENTER);
+                        errorMessage.add(error);
+                        errorMessage.setSize(500, 200);
+                        errorMessage.setVisible(true);
+                    }
+                });
                 back.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -181,35 +256,6 @@ public class ToDoListView extends JFrame {
                  * Everytime a new one is added, the counter int will increment
                  * so the task rectangles won't overlap
                  */
-                addUpdate.addActionListener(event ->
-                {
-                    Double start;
-                    Double end;
-                    try {
-                        start = Double.parseDouble(startDateField.getText());
-                        end = Double.parseDouble(endDateField.getText());
-                        Task temp = new Task(nameField.getText(), descriptionField.getText(),
-                                priorityField.getText(), start, end, true);
-
-                        t = new JButton(temp.toString());
-                        t.setBounds(50, counter, 700, 100);
-                        frame.add(t);
-
-                        currentList.add(temp);
-                        TaskManager tm = new TaskManager(currentList);
-                        //testing TaskManager
-                        tm.printArrayList();
-                        counter += 120;
-                        System.out.println("Created new task");
-                    } catch (NumberFormatException numberFormatException) {
-                        numberFormatException.printStackTrace();
-                        JFrame errorMessage = new JFrame();
-                        JLabel error = new JLabel("Please enter the date in the format mm.dd.", SwingConstants.CENTER);
-                        errorMessage.add(error);
-                        errorMessage.setSize(500, 200);
-                        errorMessage.setVisible(true);
-                    }
-                });
             }
         });
 
