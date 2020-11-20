@@ -17,6 +17,7 @@ public class TaskManager extends JFrame {
      * Printing the sequence of the list
      */
     public void printArrayList() {
+        System.out.println("TEST: TASK MANAGER: PRINT ARRAY LIST WORKS");
         for (Task t : list) {
             System.out.println(t);
         }
