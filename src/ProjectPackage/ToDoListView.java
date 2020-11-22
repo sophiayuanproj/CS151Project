@@ -11,22 +11,37 @@ import java.util.ArrayList;
 public class ToDoListView extends JFrame {
 
     //List to be used in TaskManager
-    public ArrayList<Task> currentList = new ArrayList<>();
+    private ArrayList<Task> currentList = new ArrayList<>();
     /**
      * Counter for the space between each task's rectangle
      */
     private int counter = 120;
+    public  JFrame frame;
 
     public ToDoListView() {
-        JFrame frame = new JFrame("To-Do List");
+
+        //System.out.println("TESTING THE CURRENT LIST: " + currentList);
+
+    }
+
+    /**
+     * To get the current list to be sorted
+     * @return
+     */
+    public ArrayList<Task> getCurrentList(){
+        return this.currentList;
+    }
+
+    public void drawToDoList(){
+        frame = new JFrame("To-Do List");
 
         //Sort, Rewards, and Add buttons
-        JButton sortView = new JButton("Sort View");
+        //JButton sortView = new JButton("Sort View");
         JButton rewards = new JButton("Rewards");
         JButton editTask = new JButton("Add");
 
         //Set Bounds
-        sortView.setBounds(550, 20, 100, 50);
+        //sortView.setBounds(550, 20, 100, 50);
         rewards.setBounds(650, 20, 100, 50);
         editTask.setBounds(750, 20, 100, 50);
 
@@ -36,7 +51,7 @@ public class ToDoListView extends JFrame {
         tasks.setFont(new Font("Arial", Font.PLAIN, 28));
 
         //Add all header buttons
-        frame.add(sortView);
+        //frame.add(sortView);
         frame.add(rewards);
         frame.add(editTask);
         frame.add(tasks);
@@ -136,18 +151,23 @@ public class ToDoListView extends JFrame {
                 JButton startDate = new JButton("Start Date");
                 JButton endDate = new JButton("End Date");
 
+                //Can only be "Current" or "Finished"
+                JButton status = new JButton("Status");
+
                 //set bounds of buttons
                 name.setBounds(50, 150, 100, 50);
                 description.setBounds(50, 220, 100, 50);
                 priority.setBounds(50, 290, 100, 50);
                 startDate.setBounds(50, 360, 100, 50);
                 endDate.setBounds(50, 430, 100, 50);
+                status.setBounds(50, 500, 100, 50);
 
                 editTask.add(name);
                 editTask.add(description);
                 editTask.add(priority);
                 editTask.add(startDate);
                 editTask.add(endDate);
+                editTask.add(status);
 
                 //text fields
                 JTextField nameField = new JTextField();
@@ -155,18 +175,21 @@ public class ToDoListView extends JFrame {
                 JTextField priorityField = new JTextField();
                 JTextField startDateField = new JTextField();
                 JTextField endDateField = new JTextField();
+                JTextField statusField = new JTextField();
 
                 nameField.setBounds(200, 150, 500, 50);
                 descriptionField.setBounds(200, 220, 500, 50);
                 priorityField.setBounds(200, 290, 500, 50);
                 startDateField.setBounds(200, 360, 500, 50);
                 endDateField.setBounds(200, 430, 500, 50);
+                statusField.setBounds(200, 500, 500, 50);
 
                 editTask.add(nameField);
                 editTask.add(descriptionField);
                 editTask.add(priorityField);
                 editTask.add(startDateField);
                 editTask.add(endDateField);
+                editTask.add(statusField);
 
 
                 editTask.setSize(900, 800);
@@ -176,21 +199,30 @@ public class ToDoListView extends JFrame {
 
 
                 //click on back, return to homepage
+                /**
+                 * Action for adding new task
+                 */
                 add.addActionListener(event ->
                 {
                     System.out.println("0");
-                    Double start;
-                    Double end;
+                    double start;
+                    double end;
                     try {
                         start = Double.parseDouble(startDateField.getText());
                         end = Double.parseDouble(endDateField.getText());
+
                         Task temp = new Task(nameField.getText(), descriptionField.getText(),
-                                priorityField.getText(), start, end, true);
+                                priorityField.getText(), start, end, statusField.getText());
 
                         t = new JButton(temp.toString());
                         t.setBounds(50, counter, 700, 100);
 
                         frame.add(t);
+                        currentList.add(temp);
+
+                        //testing
+                        System.out.println("This task is being added:" + temp.toString());
+                        System.out.println("This is the current list:" + currentList.get(0));
 
                         t.addActionListener(new ActionListener() {
                             @Override
@@ -209,6 +241,7 @@ public class ToDoListView extends JFrame {
                                         temp.changeName(nameField.getText());
                                         temp.changeDescription(descriptionField.getText());
                                         temp.changePriority(priorityField.getText());
+                                        temp.changeStatus(statusField.getText());
 
                                         try {
                                             temp.changeStart(Double.parseDouble(startDateField.getText()));
@@ -228,7 +261,6 @@ public class ToDoListView extends JFrame {
                             }
                         });
 
-                        currentList.add(temp);
                         TaskManager tm = new TaskManager(currentList);
                         //testing TaskManager
                         tm.printArrayList();
@@ -259,44 +291,44 @@ public class ToDoListView extends JFrame {
             }
         });
 
-        sortView.addActionListener(new ActionListener() {
+/*        sortView.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame sortView = new JFrame();
 
-                //Header, button Back, sort by priority, date, status, type
-                JLabel sortingType = new JLabel("Sort View");
-                JButton back = new JButton("Back");
-                JButton byPriority = new JButton("By Priority");
-                JButton byDate = new JButton("By Date");
-                JButton byStatus = new JButton("By Status");
-                JButton byType = new JButton("By Type");
-
-                back.setBounds(650, 20, 100, 50);
-                byPriority.setBounds(200, 150, 500, 50);
-                byDate.setBounds(200, 220, 500, 50);
-                byStatus.setBounds(200, 290, 500, 50);
-                byType.setBounds(200, 360, 500, 50);
-                sortingType.setBounds(50, 50, 150, 50);
-                sortingType.setFont(new Font("Arial", Font.PLAIN, 28));
-
-                sortView.add(sortingType);
-                sortView.add(back);
-                sortView.add(byPriority);
-                sortView.add(byDate);
-                sortView.add(byStatus);
-                sortView.add(byType);
-
-                sortView.setSize(900, 800);
-                //sortView.getContentPane().setBackground(Color.pink);
-                sortView.setLayout(null);
-                sortView.setVisible(true);
-
-                back.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) { sortView.dispose(); }
-                });
-            }
-        });
+                SortNewScreenView();
+        });*/
     }
+
+    /**
+     * Updating the view for sorting
+     * @param t is the ArrayList to be passed in
+     */
+    public void updateView(ArrayList<Task> t)
+    {
+        //testing
+        for(Task list : t) {
+            System.out.println("This is ArrayList t: " + list);
+        }
+        if(t.isEmpty())
+        {
+            System.out.println("list is empty");
+        }
+
+        System.out.println("updateView is being called");
+        ToDoListView updatedFrame = new ToDoListView();
+
+        updatedFrame.drawToDoList();
+
+        int counter = 120;
+        for(Task task : t)
+        {
+            JButton button = new JButton(task.toString());
+            button.setBounds(50, counter, 700, 100);
+            //System.out.println("THIS IS THE TASK TO UPDATE: " + task.toString());
+            updatedFrame.frame.add(button);
+
+            counter += 120;
+        }
+    }
+
 }

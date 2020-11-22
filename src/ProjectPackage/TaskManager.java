@@ -7,10 +7,12 @@ import java.util.*;
  * Manages and sorts tasks
  */
 public class TaskManager extends JFrame {
-    public ArrayList<Task> list;
+    private ArrayList<Task> list;
+    private ToDoListView t;
 
     public TaskManager(ArrayList<Task> list) {
         this.list = list;
+
     }
 
     /**
@@ -34,49 +36,73 @@ public class TaskManager extends JFrame {
     }
 
     /**
-     * ************Not done yet
      * Sorts tasks by date and creates a new list
-     * @param s is either start or end
+     * Used code from https://www.geeksforgeeks.org/selection-sort/
+     *
+     * @param s is start
      * @return return the tasks by date, sorted
      */
     public ArrayList<Task> dateSort(String s) {
         ArrayList<Task> start = new ArrayList<Task>();
-        ArrayList<Task> end = new ArrayList<Task>();
 
-        if(s.equals("start")) {
-            for (Task t : list)
-            {
-                if(t.getStart() == 3)
-                {
-                    start.add(t);
-                }
+        if (s.equals("Current")) {
+            int n = list.size();
+            for (int i = 0; i < n - 1; i++) {
+                int min = i;
+                for (int j = i + 1; j < n; j++)
+                    if (list.get(j).getStart() < list.get(min).getStart())
+                        min = j;
+
+                Task temp = list.get(min);
+                Task increment = list.get(i);
+                list.set(min, increment);
+                list.set(i, temp);
             }
+            for (Task t : list) {
+                System.out.println("Sorting by date: " + t);
+
+            }
+            start = list;
+
         }
         return start;
     }
 
     /**
      * Sorts by status
-     * @param b status type
+     *
+     * @param s status type
      * @return a new status list
      */
-    public ArrayList<Task> statusSort( boolean b) {
-        ArrayList<Task> trueList = new ArrayList<>();
-        ArrayList<Task> falseList = new ArrayList<>();
-        if (b == true) {
+    public ArrayList<Task> statusSort(String s) {
+        ArrayList<Task> currentList = new ArrayList<>();
+        ArrayList<Task> finishedList = new ArrayList<>();
+
+        ArrayList<Task> finalList = new ArrayList<>();
             for (Task t : list) {
-                if(t.getStatus() == true) {
-                    trueList.add(t);
+                if (t.getStatus().equals("Current")) {
+                    currentList.add(t);
+
+                    //testing
+                    //System.out.println("This is being added" + t);
                 }
             }
-            return trueList;
-        }
-        for(Task t : list) {
-            if(t.getStatus() == false) {
-                falseList.add(t);
+        for (Task t : list) {
+            if (t.getStatus().equals("Finished")) {
+                finishedList.add(t);
             }
         }
-        return falseList;
+        finalList.addAll(currentList);
+        finalList.addAll(finishedList);
+        //System.out.println("Final List: " + finalList);
+        return finalList;
     }
+
+    /**
+     * Task type will be declared in the "Name: ," text field, will sort by that
+     */
+/*    public ArrayList<Task> typeSort(){
+
+    }*/
 
 }

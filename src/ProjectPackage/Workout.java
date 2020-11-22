@@ -2,7 +2,7 @@ package ProjectPackage;
 
 public class Workout extends Task {
 //Daniela
-    public Workout(String name, String description, String priority, int start, int end, boolean status) {
+    public Workout(String name, String description, String priority, int start, int end, String status) {
         super(name, description, priority, start, end, status);
     }
 }
