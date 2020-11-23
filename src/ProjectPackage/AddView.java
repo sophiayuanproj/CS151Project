@@ -1,5 +1,9 @@
 package ProjectPackage;
 
-public class AddView {
+import java.util.ArrayList;
 
+public class AddView {
+    public AddView(ArrayList<Task> list){
+
+    }
 }
