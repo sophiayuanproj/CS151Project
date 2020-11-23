@@ -13,7 +13,7 @@ public class Task extends JComponent{
     private String thePriority;
     private double startDate;
     private double endDate;
-    private boolean theStatus;
+    private String theStatus;
 
     /**
      * Task object is created here
@@ -32,7 +32,7 @@ public class Task extends JComponent{
     public Task()
     {}
 
-    public Task(String name, String description, String priority, double start, double end, boolean status) {
+    public Task(String name, String description, String priority, double start, double end, String status) {
         theName = name;
         theDescription = description;
         thePriority = priority;
@@ -144,17 +144,17 @@ public class Task extends JComponent{
      *
      * @return the status of the task
      */
-    public boolean getStatus() {
+    public String getStatus() {
         return this.theStatus;
     }
 
     /**
      * Changes the status of the task
      *
-     * @param b is what the task changes to
+     * @param s is what the task changes to
      */
-    public void changeStatus(boolean b) {
-        theStatus = b;
+    public void changeStatus(String s) {
+        theStatus = s;
     }
 
     @Override
