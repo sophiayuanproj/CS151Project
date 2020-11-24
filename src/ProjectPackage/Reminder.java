@@ -1,5 +1,9 @@
 package ProjectPackage;
 
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
 public class Reminder extends Task{
     //Isla
 
@@ -7,6 +11,9 @@ public class Reminder extends Task{
 
     public Reminder(){
         this.reminderDate = reminderDate;
+    }
+
+    public Reminder(String reminder1, String to_remind_you_here, String s, double v, double v1, String incomplete, double v2) {
     }
 
     public Double getReminderDate(){
@@ -29,4 +36,25 @@ public class Reminder extends Task{
     public String reminderMessage(){
         return "REMINDER: do " + this.getName() + " soon!";
     }
+
+
+
+
+}
+
+//  JUnit Testing
+class ReminderTester{
+    //declare Reminder object
+    Reminder rem;
+
+    @Before
+    public void setUp(){
+        rem = new Reminder("Reminder1", "To remind you here", "1", 11.2, 11.6, "Incomplete", 11.5);
+    }
+
+    @Test
+    public void testReminderMessage(){
+        assertSame(rem.reminderMessage(), "REMINDER: do Reminder1 soon!");
+    }
+
 }
