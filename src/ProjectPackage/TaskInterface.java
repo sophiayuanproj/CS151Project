@@ -46,6 +46,13 @@ public interface TaskInterface {
      *
      * @param b is the status changed to
      */
-    void changeStatus(boolean b);
+    void changeStatus(String s);
+
+    /**
+     * Converting date to string
+     * @param d is the double to be passed in
+     * @return string version of date
+     */
+    String dateToString(double d);
 
 }

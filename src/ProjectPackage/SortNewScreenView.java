@@ -60,7 +60,7 @@ public class SortNewScreenView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //t = new TaskManager(sortingList);
-                ArrayList<Task> currentList = new TaskManager(sortingList).prioritySort();
+                ArrayList<Task> currentList = new TaskManager(sortingList).prioritySort("3");
                 toDo.updateView(currentList);
             }
         });
@@ -95,17 +95,16 @@ public class SortNewScreenView extends JFrame {
         });
 
         /**
-         * Sorting by type
+         * Sorting by type: normal, spending, then workout
          */
-/*        byType.addActionListener(new ActionListener() {
+        byType.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //t = new TaskManager(sortingList);
-                ArrayList<Task> currentList = new TaskManager(sortingList).typeSort();
+                ArrayList<Task> currentList = new TaskManager(sortingList).typeSort("Normal Task");
                 toDo.updateView(currentList);
-                toDo.drawToDoList();
             }
-        });*/
+        });
     }
 
     }

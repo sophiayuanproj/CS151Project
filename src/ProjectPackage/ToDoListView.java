@@ -19,8 +19,6 @@ public class ToDoListView extends JFrame {
 
     public ToDoListView() {
 
-        //System.out.println("TESTING THE CURRENT LIST: " + currentList);
-
     }
 
     /**
@@ -56,28 +54,6 @@ public class ToDoListView extends JFrame {
         frame.add(editTask);
         frame.add(tasks);
 
-        //Test Task Buttons
-        /*Task task1 = new Task("Task 1", "a", "a", 1, 2, true);
-        JButton taskButton1 = new JButton(task1.toString());
-        taskButton1.setBounds(50, 120, 700, 100);
-
-        Task task2 = new Task("Task 2", "a", "a", 1, 2, true);
-        JButton taskButton2 = new JButton(task2.toString());
-        taskButton2.setBounds(50, 240, 700, 100);
-
-        Task task3 = new Task("Task 3", "a", "a", 1, 2, true);
-        JButton taskButton3 = new JButton(task3.toString());
-        taskButton3.setBounds(50, 360, 700, 100);
-
-        Task task4 = new Task("Task 4", "a", "a", 1, 2, true);
-        JButton taskButton4 = new JButton(task4.toString());
-        taskButton4.setBounds(50, 480, 700, 100);
-
-        frame.add(taskButton1);
-        frame.add(taskButton2);
-        frame.add(taskButton3);
-        frame.add(taskButton4);*/
-
         frame.setSize(900, 800);
         //frame.getContentPane().setBackground(Color.lightGray);
         frame.setLayout(null);
@@ -111,6 +87,7 @@ public class ToDoListView extends JFrame {
      * @param t is the ArrayList to be passed in
      */
     public void updateView(ArrayList<Task> t) {
+
         //testing
         for (Task list : t) {
             System.out.println("This is ArrayList t: " + list);

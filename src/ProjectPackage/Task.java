@@ -141,7 +141,7 @@ public class Task extends JComponent{
     }
 
     /**
-     * Changes the status of the task
+     * Changes the status of the task. TaskDateDecorator is used to decorate Task.
      *
      * @param s is what the task changes to
      */
@@ -152,8 +152,10 @@ public class Task extends JComponent{
     @Override
     public String toString()
     {
+        TaskDateDecorator td = new TaskDateDecorator(this);
+
         String s = "Name: " + theName + "  Description: " + theDescription + "  Priority: " + thePriority
-                + "  Start Date: " + startDate + "  End Date: " + endDate + "  Status: " + theStatus;
+                + "  Start Date: " + td.dateConverter(startDate) + "  End Date: " + td.dateConverter(endDate) + "  Status: " + theStatus;
         return s;
     }
 
