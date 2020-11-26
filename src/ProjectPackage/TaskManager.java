@@ -27,11 +27,34 @@ public class TaskManager extends JFrame {
 
     /**
      * Sorting task by importance
+     * Each task is ranked on a 3 star system
+     * 1 being of lower priority, and 3 being of highest priority
      *
      * @return a new task list
      */
     public ArrayList<Task> prioritySort(String s) {
         ArrayList<Task> finalList = new ArrayList<Task>();
+
+        for (Task t : list) {
+            if (t.getPriority().equals("3"));
+            finalList.add(t);
+        }
+
+        for (Task t : list) {
+            if(t.getPriority().equals("2"));
+            finalList.add(t);
+        }
+
+        for (Task t : list) {
+            if(t.getPriority().equals("1")){
+                finalList.add(t);
+            }
+        }
+
+        for (Task t : list) {
+            System.out.println("Sorting by priority: " + t);
+
+        }
 
         return finalList;
 
