@@ -36,13 +36,15 @@ public class TaskManager extends JFrame {
         ArrayList<Task> finalList = new ArrayList<Task>();
 
         for (Task t : list) {
-            if (t.getPriority().equals("3"));
-            finalList.add(t);
+            if (t.getPriority().equals("3")) {
+                finalList.add(t);
+            }
         }
 
         for (Task t : list) {
-            if(t.getPriority().equals("2"));
-            finalList.add(t);
+            if(t.getPriority().equals("2")) {
+                finalList.add(t);
+            }
         }
 
         for (Task t : list) {
@@ -55,7 +57,7 @@ public class TaskManager extends JFrame {
             System.out.println("Sorting by priority: " + t);
 
         }
-
+        System.out.println("this is the final list:" + finalList);
         return finalList;
 
     }
