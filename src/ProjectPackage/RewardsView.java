@@ -1,16 +1,25 @@
 package ProjectPackage;
 
+import org.junit.Test;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
+
 //Daniela
 public class RewardsView extends JFrame {
+    private int counter = 120;
+    private JFrame rewards;
+    private ArrayList<Task> list;
+
     public RewardsView(ArrayList<Task> list) {
 
-        JFrame rewards = new JFrame("Rewards");
+        this.list = list;
+        rewards = new JFrame("Rewards");
         JButton history = new JButton("History");
         JButton back = new JButton("Back");
         JLabel reward = new JLabel("Reward");
@@ -20,7 +29,7 @@ public class RewardsView extends JFrame {
         reward.setBounds(50, 50, 150, 50);
         reward.setFont(new Font("Arial", Font.PLAIN, 28));
 
-       // rewards.add(history);
+        // rewards.add(history);
         rewards.add(back);
         rewards.add(reward);
 
@@ -36,20 +45,28 @@ public class RewardsView extends JFrame {
             }
         });
 
-        int counter = 120;
+        filter(list);
+    }
 
-        for(Task task : list)
-        {
-            if(task.getStatus()=="Finished") {
-                JButton button = new JButton("Name: "+ task.getName() + " "+"Description: "+ task.getDescription() + " "+
-                        "Owned Date: "+ task.getEnd()+ " " + "Great job!");
+    public String filter(ArrayList<Task> list) {
+        ArrayList<Task> finished = new ArrayList<>();
+        for (Task task : list) {
+            if (task.getStatus() == "Finished") {
+                JButton button = new JButton("Name: " + task.getName() + " " + "Description: " + task.getDescription() + " " +
+                        "Owned Date: " + task.getEnd() + " " + "Great job!");
                 button.setBounds(50, counter, 700, 100);
                 //System.out.println("THIS IS THE TASK TO UPDATE: " + task.toString());
                 rewards.add(button);
-
                 counter += 120;
+                finished.add(task);
             }
         }
+        String task = null;
+        for (Task t : finished) {
+            task = t.toString();
+        }
+        return task;
     }
-
 }
+
+
