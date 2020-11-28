@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class Reminder extends Task{
-    //Isla
+public class Reminder extends Task{    //Isla
 
     private Double reminderDate;
 
@@ -16,10 +15,20 @@ public class Reminder extends Task{
     public Reminder(String reminder1, String to_remind_you_here, String s, double v, double v1, String incomplete, double v2) {
     }
 
+    /**
+     * Gets the reminder date
+     *
+     * @return the reminder date
+     */
     public Double getReminderDate(){
         return this.getReminderDate();
     }
 
+    /**
+     * Changes the reminder date
+     *
+     * @param newDate the new set reminder date
+     */
     public void changeReminderDate(double newDate){
         reminderDate = newDate;
     }
@@ -32,29 +41,4 @@ public class Reminder extends Task{
 
         return s;
     }
-
-    public String reminderMessage(){
-        return "REMINDER: do " + this.getName() + " soon!";
-    }
-
-
-
-
-}
-
-//  JUnit Testing
-class ReminderTester{
-    //declare Reminder object
-    Reminder rem;
-
-    @Before
-    public void setUp(){
-        rem = new Reminder("Reminder1", "To remind you here", "1", 11.2, 11.6, "Incomplete", 11.5);
-    }
-
-    @Test
-    public void testReminderMessage(){
-        assertSame(rem.reminderMessage(), "REMINDER: do Reminder1 soon!");
-    }
-
 }

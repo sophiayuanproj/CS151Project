@@ -34,6 +34,14 @@ public class ToDoListView extends JFrame implements Observer{
     public void drawToDoList() {
         frame = new JFrame("To-Do List");
 
+        JScrollBar sc = new JScrollBar(JScrollBar.VERTICAL);
+        sc.setBounds(860,0, 25,760);
+        //ScrollPane/Bar Attempt
+        //frame.add(sc, BorderLayout.NORTH);
+
+        frame.add(sc);
+
+
         //Sort, Rewards, and Add buttons
         //JButton sortView = new JButton("Sort View");
         JButton rewards = new JButton("Rewards");

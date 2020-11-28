@@ -184,10 +184,17 @@ public class AddView {
                                             taskStatus = j.getText();
                                         }
                                     }
-                                    temp.changeName(taskName);
+
                                     temp.changeDescription(descriptionField.getText());
-                                    temp.changePriority(priorityField.getText());
                                     temp.changeStatus(taskStatus);
+
+                                    // TO-Do: try to catch it if the number isn't 1 <= x <= 3
+                                    try{
+                                        temp.changePriority(priorityField.getText());
+                                    } catch(NoSuchFieldError noSuchFieldError){
+                                        JTextArea error = new JTextArea("Please enter a number in priority");
+                                        JOptionPane.showMessageDialog(editTask, error);
+                                    }
 
                                     try {
                                         temp.changeStart(Double.parseDouble(startDateField.getText()));
@@ -207,6 +214,9 @@ public class AddView {
                     //testing TaskManager
                     tm.printArrayList();
                     System.out.println("Created new task");
+                } catch (NullPointerException nullPointerException){
+                    JTextArea error = new JTextArea("Please select a type");
+                    JOptionPane.showMessageDialog(editTask, error);
                 } catch (NumberFormatException numberFormatException) {
                     JTextArea error = new JTextArea("Please enter the date in the format mm.dd..");
                     JOptionPane.showMessageDialog(editTask, error);
@@ -217,6 +227,7 @@ public class AddView {
              * Click the back button, JFrame Edit will be closed
              */
             back.addActionListener(new ActionListener() {
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     editTask.dispose();
