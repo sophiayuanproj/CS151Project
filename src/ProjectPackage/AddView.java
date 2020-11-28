@@ -207,9 +207,6 @@ public class AddView {
                                             taskStatus = j.getText();
                                         }
                                     }
-<<<<<<< HEAD
-
-=======
                                     String rewardStatus = null;
                                     for(JCheckBox j : rewardBox)
                                     {
@@ -218,7 +215,7 @@ public class AddView {
                                         }
                                     }
                                     temp.changeName(taskName);
->>>>>>> 9e640327d0bbe6662025927cef6d14eacbbc9afe
+
                                     temp.changeDescription(descriptionField.getText());
                                     temp.changeStatus(taskStatus);
                                     temp.changeReward(rewardStatus);
