@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
  */
 public class TaskManagerTest {
     ArrayList<Task> tasks = new ArrayList<>();
-    Task task1 = new Task("Normal Task", "Buy food", "2", 10.2, 10.3, "Finished");
-    Task task2 = new Task("Workout", "Outdoor walking", "1", 11.26, 11.26, "Current");
-    Task task3 = new Task("Spending Plan", "Rent", "3", 11.25, 11.30, "Current");
+    Task task1 = new Task("Normal Task", "Buy food", "2", 10.2, 10.3, "Finished", "Deserved");
+    Task task2 = new Task("Workout", "Outdoor walking", "1", 11.26, 11.26, "Current", "Not Deserved");
+    Task task3 = new Task("Spending Plan", "Rent", "3", 11.25, 11.30, "Current", "Not Deserved");
 
     /**
      * Sort tasks by priority

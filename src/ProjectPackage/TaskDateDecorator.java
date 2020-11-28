@@ -36,6 +36,11 @@ public class TaskDateDecorator extends TaskDecorator{
     }
 
     @Override
+    public void changeReward(String s) {
+        decoratedDate.changeReward(s);
+    }
+
+    @Override
     public void changeStatus(String s) {
         decoratedDate.changeStatus(s);
     }

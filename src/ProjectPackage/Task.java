@@ -14,6 +14,7 @@ public class Task extends JComponent {
     private double startDate;
     private double endDate;
     private String theStatus;
+    private String theReward;
 
     /**
      * Task object is created here
@@ -32,13 +33,14 @@ public class Task extends JComponent {
     public Task()
     {}
 
-    public Task(String name, String description, String priority, double start, double end, String status) {
+    public Task(String name, String description, String priority, double start, double end, String status, String reward) {
         theName = name;
         theDescription = description;
         thePriority = priority;
         startDate = start;
         endDate = end;
         theStatus = status;
+        theReward = reward;
     }
 
     /**
@@ -149,13 +151,31 @@ public class Task extends JComponent {
         theStatus = s;
     }
 
+    /**
+     * Get the reward
+     * @return the reward
+     */
+    public String getReward()
+    {
+        return theReward;
+    }
+
+    /**
+     * Setting new reward
+     * @param s the reward
+     */
+    public void changeReward(String s)
+    {
+        theReward = s;
+    }
+
     @Override
     public String toString()
     {
         TaskDateDecorator td = new TaskDateDecorator(this);
 
         String s = "Name: " + theName + "  Description: " + theDescription + "  Priority: " + thePriority
-                + "  Start Date: " + td.dateConverter(startDate) + "  End Date: " + td.dateConverter(endDate) + "  Status: " + theStatus;
+                + "  Start Date: " + td.dateConverter(startDate) + "  End Date: " + td.dateConverter(endDate) + "  Status: " + theStatus + " Reward: " + theReward;
         return s;
     }
 

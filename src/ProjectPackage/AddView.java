@@ -46,6 +46,8 @@ public class AddView {
             //Can only be "Current" or "Finished"
             JButton status = new JButton("Status");
 
+            JButton reward = new JButton("Reward");
+
             //set bounds of buttons
             name.setBounds(50, 150, 100, 50);
             description.setBounds(50, 220, 100, 50);
@@ -53,6 +55,7 @@ public class AddView {
             startDate.setBounds(50, 360, 100, 50);
             endDate.setBounds(50, 430, 100, 50);
             status.setBounds(50, 500, 100, 50);
+            reward.setBounds(50, 570, 100, 50);
 
             editTask.add(name);
             editTask.add(description);
@@ -60,6 +63,7 @@ public class AddView {
             editTask.add(startDate);
             editTask.add(endDate);
             editTask.add(status);
+            editTask.add(reward);
 
             //text fields
             JCheckBox c1 = new JCheckBox("Normal Task");
@@ -71,6 +75,8 @@ public class AddView {
             JTextField endDateField = new JTextField();
             JCheckBox c4 = new JCheckBox("Current");
             JCheckBox c5 = new JCheckBox("Finished");
+            JCheckBox c6 = new JCheckBox("Deserved");
+            JCheckBox c7 = new JCheckBox("Not Deserved");
 
             c1.setBounds(200, 150, 150, 50);
             c2.setBounds(400, 150, 150, 50);
@@ -81,6 +87,8 @@ public class AddView {
             endDateField.setBounds(200, 430, 500, 50);
             c4.setBounds(200, 500, 150, 50);
             c5.setBounds(400, 500, 150, 50);
+            c6.setBounds(200, 570, 150, 50);
+            c7.setBounds(400, 570, 150, 50);
 
             editTask.add(c1);
             editTask.add(c2);
@@ -91,6 +99,8 @@ public class AddView {
             editTask.add(endDateField);
             editTask.add(c4);
             editTask.add(c5);
+            editTask.add(c6);
+            editTask.add(c7);
 
             editTask.setSize(900, 800);
             //editTask.getContentPane().setBackground(Color.pink);
@@ -101,9 +111,14 @@ public class AddView {
             typeBox.add(c1);
             typeBox.add(c2);
             typeBox.add(c3);
+
             ArrayList<JCheckBox> statusBox = new ArrayList<JCheckBox>();
             statusBox.add(c4);
             statusBox.add(c5);
+
+            ArrayList<JCheckBox> rewardBox = new ArrayList<JCheckBox>();
+            rewardBox.add(c6);
+            rewardBox.add(c7);
 
             JTextArea hint = new JTextArea("Please select one option only.");
             JOptionPane.showMessageDialog(editTask, hint);
@@ -123,6 +138,7 @@ public class AddView {
                 double end;
                 String taskName = null;
                 String taskStatus = null;
+                String rewardField = null;
 
                 try {
                     start = Double.parseDouble(startDateField.getText());
@@ -139,11 +155,18 @@ public class AddView {
                         }
                     }
 
+                    for(JCheckBox j : rewardBox)
+                    {
+                        if(j.isSelected()){
+                            rewardField = j.getText();
+                        }
+                    }
+
                     Task temp = new Task(taskName, descriptionField.getText(),
-                            priorityField.getText(), start, end, taskStatus);
+                            priorityField.getText(), start, end, taskStatus, rewardField);
 
                     t = new JButton(temp.toString());
-                    t.setBounds(50, counter, 700, 100);
+                    t.setBounds(50, counter, 800, 100);
 
                     frame.add(t);
                     currentList.add(temp);
@@ -184,10 +207,18 @@ public class AddView {
                                             taskStatus = j.getText();
                                         }
                                     }
+                                    String rewardStatus = null;
+                                    for(JCheckBox j : rewardBox)
+                                    {
+                                        if(j.isSelected()){
+                                            rewardStatus = j.getText();
+                                        }
+                                    }
                                     temp.changeName(taskName);
                                     temp.changeDescription(descriptionField.getText());
                                     temp.changePriority(priorityField.getText());
                                     temp.changeStatus(taskStatus);
+                                    temp.changeReward(rewardStatus);
 
                                     try {
                                         temp.changeStart(Double.parseDouble(startDateField.getText()));
