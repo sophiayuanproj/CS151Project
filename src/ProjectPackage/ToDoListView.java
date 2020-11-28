@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 //manages and stores taskManager objects
 //Isla, Sophia, Danlei (Daniela)
-public class ToDoListView extends JFrame {
+public class ToDoListView extends JFrame implements Observer{
 
+    private Subject subject;
     //List to be used in TaskManager
     private ArrayList<Task> currentList = new ArrayList<>();
     /**
@@ -112,4 +113,17 @@ public class ToDoListView extends JFrame {
         }
     }
 
+    @Override
+    public void update(ArrayList<Task> tasks) {
+        System.out.println("Observer Pattern Test: ");
+        for(Task t: tasks) {
+            System.out.println(t.toString());
+        }
+        System.out.println("Test Over");
+    }
+
+    @Override
+    public void setSubject(Subject sub) {
+        this.subject = sub;
+    }
 }

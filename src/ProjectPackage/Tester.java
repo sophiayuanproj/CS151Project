@@ -20,6 +20,24 @@ public class Tester {
 
         SortNewScreenView sortScreen = new SortNewScreenView(toDoList);
 
+        //Observer pattern test
+        ArrayList<Task> tasks = new ArrayList<>();
+        Task task1 = new Task("Normal Task", "Buy food", "2", 10.2, 10.3, "Finished");
+        Task task2 = new Task("Workout", "Outdoor walking", "1", 11.26, 11.26, "Current");
+        Task task3 = new Task("Spending Plan", "Rent", "3", 11.25, 11.30, "Current");
+        ArrayList<Task> empty = new ArrayList<>();
+        Task task4 = new Task("null","null","0",1.1,1.1,"null");
+        empty.add(task4);
+
+        tasks.add(task1);
+        tasks.add(task2);
+        tasks.add(task3);
+        TaskManager tm = new TaskManager(empty);
+
+        ToDoListView tdl = new ToDoListView();
+        tm.attach(tdl);
+        tdl.setSubject(tm);
+        tm.notifyAllObservers(tasks);
 
     }
 }

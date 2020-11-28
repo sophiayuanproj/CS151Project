@@ -7,7 +7,7 @@ import javax.swing.*;
  * Author @Team 7
  */
 
-public class Task extends JComponent{
+public class Task extends JComponent {
     private String theName;
     private String theDescription;
     private String thePriority;

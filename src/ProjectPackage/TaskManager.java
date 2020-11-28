@@ -6,12 +6,14 @@ import java.util.*;
 /**
  * Manages and sorts tasks
  */
-public class TaskManager extends JFrame {
+public class TaskManager extends JFrame implements Subject{
     private ArrayList<Task> list;
     private ToDoListView t;
+    private List<Observer> observers;
 
     public TaskManager(ArrayList<Task> list) {
         this.list = list;
+        this.observers = new ArrayList<>();
 
     }
 
@@ -159,4 +161,15 @@ public class TaskManager extends JFrame {
         return finalList;
     }
 
+    @Override
+    public void notifyAllObservers(ArrayList<Task> tasks) {
+        for(Observer o: observers) {
+            o.update(tasks);
+        }
+    }
+
+    @Override
+    public void attach(Observer o) {
+        observers.add(o);
+    }
 }

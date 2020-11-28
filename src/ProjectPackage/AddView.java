@@ -6,10 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class AddView{
+public class AddView {
         private JButton t;
         private int counter = 120;
         private ArrayList<Task> currentList;
+
         /**
          * Add or edit tasks to ToDoListView
          * @param frame is the TodoListView JFrame
@@ -226,4 +227,5 @@ public class AddView{
         public ArrayList<Task> getCurrentList(){
             return currentList;
         }
-    }
+
+}
