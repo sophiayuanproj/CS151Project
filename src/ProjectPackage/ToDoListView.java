@@ -113,7 +113,7 @@ public class ToDoListView extends JFrame implements Observer{
         int counter = 120;
         for (Task task : t) {
             JButton button = new JButton(task.toString());
-            button.setBounds(50, counter, 700, 100);
+            button.setBounds(50, counter, 800, 100);
             //System.out.println("THIS IS THE TASK TO UPDATE: " + task.toString());
             updatedFrame.frame.add(button);
 

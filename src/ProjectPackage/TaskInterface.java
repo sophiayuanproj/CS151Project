@@ -42,9 +42,16 @@ public interface TaskInterface {
     void changeEnd(double d);
 
     /**
+     * Changes reward status
+     *
+     * @param s is the date changed to
+     */
+    void changeReward(String s);
+
+    /**
      * Changes status of task
      *
-     * @param b is the status changed to
+     * @param s is the status changed to
      */
     void changeStatus(String s);
 
