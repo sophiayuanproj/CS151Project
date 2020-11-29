@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 //manages and stores taskManager objects
@@ -71,7 +72,11 @@ public class ToDoListView extends JFrame implements Observer{
         rewards.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RewardsView rv = new RewardsView(currentList);
+                try {
+                    RewardsView rv = new RewardsView(currentList);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
 

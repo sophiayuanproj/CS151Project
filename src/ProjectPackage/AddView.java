@@ -1,15 +1,20 @@
 package ProjectPackage;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddView {
         private JButton t;
         private int counter = 120;
         private ArrayList<Task> currentList;
+        private static final String IMG_PATH = "src/ProjectPackage/image.png";
 
         /**
          * Add or edit tasks to ToDoListView
@@ -235,6 +240,19 @@ public class AddView {
                                         JTextArea error = new JTextArea("Please enter the date in the format mm.dd..");
                                         JOptionPane.showMessageDialog(editTask, error);
                                     }
+                                    //When user finishes a task there will be a reward image pops out
+                                    if(temp.getStatus() == "Finished") {
+                                        try {
+                                            BufferedImage image = ImageIO.read(new File(IMG_PATH));
+                                            ImageIcon icon = new ImageIcon(image);
+                                            JLabel label = new JLabel(icon);
+                                            JOptionPane.showMessageDialog(frame, label);
+                                            temp.changeReward("Deserved");
+
+                                        } catch (IOException exception) {
+                                            exception.printStackTrace();
+                                        }
+                                    }
                                     t.setText(temp.toString());
                                     t.revalidate();
                                 }
@@ -267,8 +285,10 @@ public class AddView {
             });
         }
 
-        public ArrayList<Task> getCurrentList(){
-            return currentList;
-        }
+    /**
+     * Gets the current list
+     * @return current list
+     */
+    public ArrayList<Task> getCurrentList(){ return currentList; }
 
 }
