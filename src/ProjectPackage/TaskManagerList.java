@@ -21,6 +21,7 @@ public class TaskManagerList implements CommandListTask{
      */
     @Override
     public void listAll() {
-        task.toString();
+        //Test
+        System.out.println(task.toString());
     }
 }

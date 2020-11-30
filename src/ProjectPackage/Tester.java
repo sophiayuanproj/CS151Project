@@ -39,5 +39,13 @@ public class Tester {
         tdl.setSubject(tm);
         tm.notifyAllObservers(tasks);
 
+        //Step 5 of command pattern
+        System.out.println("Command Pattern Test:");
+        Task task = new Task("Normal Task", "Command Pattern","3",11.30,11.30, "Finished","Deserved");
+        TaskManagerList tml = new TaskManagerList(task);
+        TaskListInvoker tli = new TaskListInvoker();
+        tli.addTask(tml);
+        tli.showTasks();
+        System.out.println("Test Over");
     }
 }
