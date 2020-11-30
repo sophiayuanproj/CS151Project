@@ -5,6 +5,7 @@ import java.util.*;
 
 /**
  * Manages and sorts tasks
+ * Request class for command pattern
  */
 public class TaskManager extends JFrame implements Subject{
     private ArrayList<Task> list;
