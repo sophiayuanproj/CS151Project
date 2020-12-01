@@ -9,20 +9,29 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.BlockingQueue;
 
-public class AddView {
+public class AddView{
+
+        private BlockingQueue<Message> queue;
         private JButton t;
         private int counter = 120;
         private ArrayList<Task> currentList;
         private static final String IMG_PATH = "src/ProjectPackage/image.png";
 
+        public static AddView init(BlockingQueue<Message> queue)
+        {
+            return new AddView(queue, null, null);
+        }
+
         /**
          * Add or edit tasks to ToDoListView
+         * @param queue is the blocking queue
          * @param frame is the TodoListView JFrame
          * @param currentList is a list contains all the tasks
          */
-    public AddView(JFrame frame, ArrayList<Task> currentList) {
-
+    public AddView(BlockingQueue<Message> queue, Frame frame, ArrayList<Task> currentList) {
+            this.queue = queue;
             this.currentList = currentList;
             JFrame editTask = new JFrame("Edit");
 
@@ -138,7 +147,8 @@ public class AddView {
             counter = 120 + currentList.size() * 120;
             add.addActionListener(event ->
             {
-                System.out.println("0");
+
+                System.out.println("Being added");
                 double start;
                 double end;
                 String taskName = null;
@@ -180,6 +190,13 @@ public class AddView {
                     System.out.println("This task is being added:" + temp.toString());
                     System.out.println("This is the current list:" + currentList.get(0));
 
+                    try{
+                        this.queue.put(new AddMessage());
+                    }
+                    catch(InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
                     /**
                      * Task can be edited by clicking itself
                      */
@@ -273,16 +290,16 @@ public class AddView {
                 }
 
             });
-            /**
-             * Click the back button, JFrame Edit will be closed
-             */
-            back.addActionListener(new ActionListener() {
+        /**
+         * Click the back button, JFrame Edit will be closed
+         */
+        back.addActionListener(new ActionListener() {
 
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    editTask.dispose();
-                }
-            });
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editTask.dispose();
+            }
+        });
         }
 
     /**

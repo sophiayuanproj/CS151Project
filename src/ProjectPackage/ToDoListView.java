@@ -7,8 +7,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//manages and stores taskManager objects
 //Isla, Sophia, Danlei (Daniela)
+
+/**
+ * Manages and stores taskManager objects
+ */
 public class ToDoListView extends JFrame implements Observer{
 
     private Subject subject;
@@ -83,7 +86,7 @@ public class ToDoListView extends JFrame implements Observer{
         editTask.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddView ad = new AddView(frame, currentList);
+                AddView ad = new AddView(null, frame, currentList);
             }
         });
 

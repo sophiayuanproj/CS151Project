@@ -1,7 +1,8 @@
 package ProjectPackage;
 
 import javax.swing.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Manages and sorts tasks

@@ -2,13 +2,12 @@ package ProjectPackage;
 
 import java.util.ArrayList;
 
+/**
+ * For testing
+ */
 public class Tester {
     public static void main(String[] args)
     {
-
-        //Testing
-       /* Task t1 = new Task("Task 1", "a", "a", 1, 2, true);
-        Task t2 = new Task("Task 2", "b", "b", 3, 4, true);*/
 
         ArrayList<Task> taskList = new ArrayList<>();
 
@@ -18,7 +17,7 @@ public class Tester {
 
         TaskManager t = new TaskManager(taskList);
 
-        SortNewScreenView sortScreen = new SortNewScreenView(toDoList);
+        SortNewScreenView sortScreen = new SortNewScreenView(null, toDoList);
 
         //Observer pattern test
         ArrayList<Task> tasks = new ArrayList<>();
@@ -42,10 +41,10 @@ public class Tester {
         //Step 5 of command pattern
         System.out.println("Command Pattern Test:");
         Task task = new Task("Normal Task", "Command Pattern","3",11.30,11.30, "Finished","Deserved");
-        TaskManagerList tml = new TaskManagerList(task);
+/*        TaskManagerList tml = new TaskManagerList(task);
         TaskListInvoker tli = new TaskListInvoker();
         tli.addTask(tml);
-        tli.showTasks();
+        tli.showTasks();*/
         System.out.println("Test Over");
     }
 }
