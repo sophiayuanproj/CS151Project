@@ -86,6 +86,7 @@ public class SortNewScreenView extends JFrame {
                 frame.setLayout(null);
                 frame.setVisible(true);
                 JLabel errorText = new JLabel("Cannot Sort With Empty Field");
+                System.out.println("One or more of your fields are empty");
                 errorText.setBounds(100, 50, 400, 50);
                 errorText.setFont(new Font("Arial", Font.PLAIN, 15));
                 frame.add(errorText);
@@ -116,6 +117,7 @@ public class SortNewScreenView extends JFrame {
                     frame.setLayout(null);
                     frame.setVisible(true);
                     JLabel errorText = new JLabel("Cannot Sort With Empty Field");
+                    System.out.println("One or more of your fields are empty");
                     errorText.setBounds(100, 50, 400, 50);
                     errorText.setFont(new Font("Arial", Font.PLAIN, 15));
                     frame.add(errorText);
@@ -146,6 +148,7 @@ public class SortNewScreenView extends JFrame {
                     frame.setLayout(null);
                     frame.setVisible(true);
                     JLabel errorText = new JLabel("Cannot Sort With Empty Field");
+                    System.out.println("One or more of your fields are empty");
                     errorText.setBounds(100, 50, 400, 50);
                     errorText.setFont(new Font("Arial", Font.PLAIN, 15));
                     frame.add(errorText);
@@ -171,6 +174,7 @@ public class SortNewScreenView extends JFrame {
                     frame.setLayout(null);
                     frame.setVisible(true);
                     JLabel errorText = new JLabel("Cannot Sort With Empty Field");
+                    System.out.println("One or more of your fields are empty");
                     errorText.setBounds(100, 50, 400, 50);
                     errorText.setFont(new Font("Arial", Font.PLAIN, 15));
                     frame.add(errorText);
