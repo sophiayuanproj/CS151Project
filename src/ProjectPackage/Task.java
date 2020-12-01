@@ -28,7 +28,7 @@ public class Task extends JComponent {
      */
 
     /**
-     * Created for Isla
+     * Empty constructor because of subclass use/inheritance
      */
     public Task()
     {}
