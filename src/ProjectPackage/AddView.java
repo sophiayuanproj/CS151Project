@@ -149,9 +149,6 @@ public class AddView{
             rewardBox.add(c6);
             rewardBox.add(c7);
 
-            JTextArea hint = new JTextArea("Please select one option only.");
-            JOptionPane.showMessageDialog(editTask, hint);
-
             //click on back, return to homepage
             /**
              * Adds the new tasks
