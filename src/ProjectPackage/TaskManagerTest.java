@@ -18,6 +18,7 @@ public class TaskManagerTest {
 
     /**
      * Sort tasks by priority
+     *
      * @result tasks in TaskManager will be sort by priority without any error
      */
     @Test
@@ -35,6 +36,7 @@ public class TaskManagerTest {
 
     /**
      * Sort tasks by date
+     *
      * @result tasks in TaskManager will be sort by date without any error
      */
     @Test
@@ -52,6 +54,7 @@ public class TaskManagerTest {
 
     /**
      * Sort tasks by status
+     *
      * @result tasks in TaskManager will be sort by status without any error
      */
     @Test
@@ -69,6 +72,7 @@ public class TaskManagerTest {
 
     /**
      * Sort tasks by type
+     *
      * @result tasks in TaskManager will be sort by type without any error
      */
     @Test

@@ -4,5 +4,5 @@ package ProjectPackage;
 /**
  * For sorting
  */
-public class SelectMessage implements Message{
+public class SelectMessage implements Message {
 }

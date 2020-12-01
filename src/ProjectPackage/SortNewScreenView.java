@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * Sorting screen for program
+ */
 public class SortNewScreenView extends JFrame {
 
     private ArrayList<Task> sortingList;
@@ -17,16 +20,23 @@ public class SortNewScreenView extends JFrame {
 
     private ToDoListView toDo = new ToDoListView();
 
-    public static SortNewScreenView init(BlockingQueue<Message> queue)
-    {
+    /**
+     * Initialize queue
+     *
+     * @param queue is blockingqueue to be initialized
+     * @return new sort screen
+     */
+    public static SortNewScreenView init(BlockingQueue<Message> queue) {
         return new SortNewScreenView(queue, null);
     }
+
     /**
      * Sorting the lists in a new view
+     *
      * @param queue is the blocking queue
-     * @param list is a list to be sorted
+     * @param list  is a list to be sorted
      */
-    public SortNewScreenView(BlockingQueue<Message> queue, ToDoListView list){
+    public SortNewScreenView(BlockingQueue<Message> queue, ToDoListView list) {
         this.queue = queue;
         sortingList = list.getCurrentList();
 
@@ -65,32 +75,28 @@ public class SortNewScreenView extends JFrame {
          * Sorting by priority
          */
         byPriority.addActionListener(event ->
-                {
-                    try {
-                        ArrayList<Task> currentList = new TaskManager(sortingList).prioritySort("3");
-                        toDo.updateView(currentList);
-                        throw new NullPointerException();
-                    }
-                    catch(NullPointerException e)
-                    {
-                        final JFrame frame = new JFrame();
-                        frame.setSize(400, 200);
-                        frame.setLayout(null);
-                        frame.setVisible(true);
-                        JLabel errorText = new JLabel("Cannot Sort With Empty Field");
-                        errorText.setBounds(100, 50, 400, 50);
-                        errorText.setFont(new Font("Arial", Font.PLAIN, 15));
-                        frame.add(errorText);
-                    }
+        {
+            try {
+                ArrayList<Task> currentList = new TaskManager(sortingList).prioritySort("3");
+                toDo.updateView(currentList);
+                throw new NullPointerException();
+            } catch (NullPointerException e) {
+                final JFrame frame = new JFrame();
+                frame.setSize(400, 200);
+                frame.setLayout(null);
+                frame.setVisible(true);
+                JLabel errorText = new JLabel("Cannot Sort With Empty Field");
+                errorText.setBounds(100, 50, 400, 50);
+                errorText.setFont(new Font("Arial", Font.PLAIN, 15));
+                frame.add(errorText);
+            }
 
-                    try{
-                        this.queue.put(new SelectMessage());
-                    }
-                    catch(InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    });
+            try {
+                this.queue.put(new SelectMessage());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
         /**
          * Sorting by date
@@ -104,9 +110,7 @@ public class SortNewScreenView extends JFrame {
                     ArrayList<Task> currentList = new TaskManager(sortingList).dateSort("Current");
                     toDo.updateView(currentList);
                     throw new NullPointerException();
-                }
-                catch(NullPointerException exception)
-                {
+                } catch (NullPointerException exception) {
                     final JFrame frame = new JFrame();
                     frame.setSize(400, 200);
                     frame.setLayout(null);
@@ -131,14 +135,12 @@ public class SortNewScreenView extends JFrame {
 
                 //t = new TaskManager(sortingList);
 
-                try{
-                ArrayList<Task> currentList = new TaskManager(sortingList).statusSort("Current");
-                        //t.statusSort("Current");
-                toDo.updateView(currentList);
+                try {
+                    ArrayList<Task> currentList = new TaskManager(sortingList).statusSort("Current");
+                    //t.statusSort("Current");
+                    toDo.updateView(currentList);
                     throw new NullPointerException();
-                }
-                catch(NullPointerException exception)
-                {
+                } catch (NullPointerException exception) {
                     final JFrame frame = new JFrame();
                     frame.setSize(400, 200);
                     frame.setLayout(null);
@@ -159,13 +161,11 @@ public class SortNewScreenView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //t = new TaskManager(sortingList);
 
-                try{
-                ArrayList<Task> currentList = new TaskManager(sortingList).typeSort("Normal Task");
-                toDo.updateView(currentList);
+                try {
+                    ArrayList<Task> currentList = new TaskManager(sortingList).typeSort("Normal Task");
+                    toDo.updateView(currentList);
                     throw new NullPointerException();
-                }
-                catch(NullPointerException exception)
-                {
+                } catch (NullPointerException exception) {
                     final JFrame frame = new JFrame();
                     frame.setSize(400, 200);
                     frame.setLayout(null);
@@ -179,4 +179,4 @@ public class SortNewScreenView extends JFrame {
         });
     }
 
-    }
+}

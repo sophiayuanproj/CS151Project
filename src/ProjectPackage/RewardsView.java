@@ -10,7 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//Daniela
+/**
+ * View for rewards
+ * Author @Daniela
+ */
 public class RewardsView extends JFrame {
     private int counter = 120;
     private JFrame rewards;
@@ -18,7 +21,6 @@ public class RewardsView extends JFrame {
     private static final String IMG_PATH = "src/ProjectPackage/image02.png";
 
     /**
-     *
      * @param list is a list contains all the tasks in TodoList
      */
     public RewardsView(ArrayList<Task> list) throws IOException {
@@ -65,7 +67,6 @@ public class RewardsView extends JFrame {
     }
 
     /**
-     *
      * @param list is a list to be filtered
      * @return an arraylist contains all the finished tasks
      */

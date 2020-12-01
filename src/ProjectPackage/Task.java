@@ -30,8 +30,8 @@ public class Task extends JComponent {
     /**
      * Empty constructor because of subclass use/inheritance
      */
-    public Task()
-    {}
+    public Task() {
+    }
 
     public Task(String name, String description, String priority, double start, double end, String status, String reward) {
         theName = name;
@@ -153,25 +153,24 @@ public class Task extends JComponent {
 
     /**
      * Get the reward
+     *
      * @return the reward
      */
-    public String getReward()
-    {
+    public String getReward() {
         return theReward;
     }
 
     /**
      * Setting new reward
+     *
      * @param s the reward
      */
-    public void changeReward(String s)
-    {
+    public void changeReward(String s) {
         theReward = s;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         TaskDateDecorator td = new TaskDateDecorator(this);
 
         String s = "Name: " + theName + "  Description: " + theDescription + "  Priority: " + thePriority

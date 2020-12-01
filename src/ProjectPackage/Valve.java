@@ -1,12 +1,13 @@
 package ProjectPackage;
 
 /**
- * Command interface
+ * Command interface with Valve
  */
 public interface Valve {
 
     /**
      * ValveResponse
+     *
      * @param message to be executed
      * @return message
      */

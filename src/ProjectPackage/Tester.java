@@ -6,8 +6,7 @@ import java.util.ArrayList;
  * For testing
  */
 public class Tester {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         ArrayList<Task> taskList = new ArrayList<>();
 
@@ -25,7 +24,7 @@ public class Tester {
         Task task2 = new Task("Workout", "Outdoor walking", "1", 11.26, 11.26, "Current", "Not Deserved");
         Task task3 = new Task("Spending Plan", "Rent", "3", 11.25, 11.30, "Current", "Not Deserved");
         ArrayList<Task> empty = new ArrayList<>();
-        Task task4 = new Task("null","null","0",1.1,1.1,"null", "Not Deserved");
+        Task task4 = new Task("null", "null", "0", 1.1, 1.1, "null", "Not Deserved");
         empty.add(task4);
 
         tasks.add(task1);
@@ -38,9 +37,9 @@ public class Tester {
         tdl.setSubject(tm);
         tm.notifyAllObservers(tasks);
 
-        //Step 5 of command pattern
+        //Step 5 of a different command pattern test
         System.out.println("Command Pattern Test:");
-        Task task = new Task("Normal Task", "Command Pattern","3",11.30,11.30, "Finished","Deserved");
+        Task task = new Task("Normal Task", "Command Pattern", "3", 11.30, 11.30, "Finished", "Deserved");
 /*        TaskManagerList tml = new TaskManagerList(task);
         TaskListInvoker tli = new TaskListInvoker();
         tli.addTask(tml);

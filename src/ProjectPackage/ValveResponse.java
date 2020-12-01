@@ -1,7 +1,10 @@
 package ProjectPackage;
 
-    public enum ValveResponse {
-        MISS,
-        EXECUTED,
-        FINISH
-    }
+/**
+ * Enum for Valve Response
+ */
+public enum ValveResponse {
+    MISS,
+    EXECUTED,
+    FINISH
+}

@@ -2,8 +2,8 @@ package ProjectPackage;
 
 
 /**
- * For adding
+ * For the add message
  */
-public class AddMessage implements Message{
+public class AddMessage implements Message {
 
 }

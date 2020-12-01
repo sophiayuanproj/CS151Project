@@ -7,21 +7,20 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//Isla, Sophia, Danlei (Daniela)
-
 /**
  * Manages and stores taskManager objects
+ * Isla, Sophia, Danlei (Daniela)
  */
-public class ToDoListView extends JFrame implements Observer{
+public class ToDoListView extends JFrame implements Observer {
 
     private Subject subject;
     //List to be used in TaskManager
     private ArrayList<Task> currentList = new ArrayList<>();
-    /**
-     * Counter for the space between each task's rectangle
-     */
     public JFrame frame;
 
+    /**
+     * Empty constructor for class
+     */
     public ToDoListView() {
 
     }
@@ -39,7 +38,7 @@ public class ToDoListView extends JFrame implements Observer{
         frame = new JFrame("To-Do List");
 
         JScrollBar sc = new JScrollBar(JScrollBar.VERTICAL);
-        sc.setBounds(860,0, 25,760);
+        sc.setBounds(860, 0, 25, 760);
 
         frame.add(sc);
 
@@ -126,15 +125,23 @@ public class ToDoListView extends JFrame implements Observer{
         }
     }
 
+    /**
+     * Updating view
+     *
+     * @param tasks is the list of tasks needs to be updated
+     */
     @Override
     public void update(ArrayList<Task> tasks) {
         System.out.println("Observer Pattern Test: ");
-        for(Task t: tasks) {
+        for (Task t : tasks) {
             System.out.println(t.toString());
         }
         System.out.println("Test Over");
     }
 
+    /**
+     * Setting the subject
+     */
     @Override
     public void setSubject(Subject sub) {
         this.subject = sub;

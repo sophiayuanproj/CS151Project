@@ -8,7 +8,7 @@ import java.util.List;
  * Manages and sorts tasks
  * Request class for command pattern
  */
-public class TaskManager extends JFrame implements Subject{
+public class TaskManager extends JFrame implements Subject {
     private ArrayList<Task> list;
     private ToDoListView t;
     private List<Observer> observers;
@@ -46,13 +46,13 @@ public class TaskManager extends JFrame implements Subject{
         }
 
         for (Task t : list) {
-            if(t.getPriority().equals("2")) {
+            if (t.getPriority().equals("2")) {
                 finalList.add(t);
             }
         }
 
         for (Task t : list) {
-            if(t.getPriority().equals("1")){
+            if (t.getPriority().equals("1")) {
                 finalList.add(t);
             }
         }
@@ -110,14 +110,14 @@ public class TaskManager extends JFrame implements Subject{
         ArrayList<Task> finishedList = new ArrayList<>();
 
         ArrayList<Task> finalList = new ArrayList<>();
-            for (Task t : list) {
-                if (t.getStatus().equals("Current")) {
-                    currentList.add(t);
+        for (Task t : list) {
+            if (t.getStatus().equals("Current")) {
+                currentList.add(t);
 
-                    //testing
-                    //System.out.println("This is being added" + t);
-                }
+                //testing
+                //System.out.println("This is being added" + t);
             }
+        }
         for (Task t : list) {
             if (t.getStatus().equals("Finished")) {
                 finishedList.add(t);
@@ -133,29 +133,22 @@ public class TaskManager extends JFrame implements Subject{
      * Task type will be declared in the "Name: ," text field, will sort by that
      * Sorts by first normal task, spending plan, then workout
      */
-    public ArrayList<Task> typeSort(String s){
+    public ArrayList<Task> typeSort(String s) {
         ArrayList<Task> finalList = new ArrayList<Task>();
-        if(s.equals("Normal Task"))
-        {
-            for(Task t : list)
-            {
-                if(t.getName().equals("Normal Task"))
-                {
+        if (s.equals("Normal Task")) {
+            for (Task t : list) {
+                if (t.getName().equals("Normal Task")) {
                     finalList.add(t);
                 }
             }
-            for(Task t : list)
-            {
-                if(t.getName().equals("Spending Plan"))
-                {
+            for (Task t : list) {
+                if (t.getName().equals("Spending Plan")) {
                     finalList.add(t);
                 }
             }
 
-            for(Task t : list)
-            {
-                if(t.getName().equals("Workout"))
-                {
+            for (Task t : list) {
+                if (t.getName().equals("Workout")) {
                     finalList.add(t);
                 }
             }
@@ -163,13 +156,23 @@ public class TaskManager extends JFrame implements Subject{
         return finalList;
     }
 
+    /**
+     * Notifies all observers
+     *
+     * @param tasks is the updated list of tasks
+     */
     @Override
     public void notifyAllObservers(ArrayList<Task> tasks) {
-        for(Observer o: observers) {
+        for (Observer o : observers) {
             o.update(tasks);
         }
     }
 
+    /**
+     * Attaching observer
+     *
+     * @param o is the observer
+     */
     @Override
     public void attach(Observer o) {
         observers.add(o);
