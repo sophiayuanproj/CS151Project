@@ -212,7 +212,7 @@ public class AddView {
 
                 try {
                     this.queue.put(new AddMessage());
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 /**

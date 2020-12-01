@@ -77,6 +77,12 @@ public class SortNewScreenView extends JFrame {
         byPriority.addActionListener(event ->
         {
             try {
+                this.queue.put(new SelectMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
                 ArrayList<Task> currentList = new TaskManager(sortingList).prioritySort("3");
                 toDo.updateView(currentList);
                 throw new NullPointerException();
@@ -90,12 +96,6 @@ public class SortNewScreenView extends JFrame {
                 errorText.setBounds(100, 50, 400, 50);
                 errorText.setFont(new Font("Arial", Font.PLAIN, 15));
                 frame.add(errorText);
-            }
-
-            try {
-                this.queue.put(new SelectMessage());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         });
 
