@@ -79,6 +79,21 @@ public class AddView{
             editTask.add(status);
             editTask.add(reward);
 
+            //Instruction Labels
+            JLabel priorityLabel = new JLabel("(Please enter a number between 1-3)");
+            JLabel startLabel = new JLabel("(Please use the mm.dd format)");
+            JLabel endLabel = new JLabel("(Please use the mm.dd format)");
+            priorityLabel.setFont(new Font("Arial", Font.PLAIN, 9));
+            startLabel.setFont(new Font("Arial", Font.PLAIN, 9));
+            endLabel.setFont(new Font("Arial", Font.PLAIN, 9));
+            priorityLabel.setBounds(720, 290, 200, 50);
+            startLabel.setBounds(720, 360, 200, 50);
+            endLabel.setBounds(720, 430, 200, 50);
+
+            editTask.add(priorityLabel);
+            editTask.add(startLabel);
+            editTask.add(endLabel);
+
             //text fields
             JCheckBox c1 = new JCheckBox("Normal Task");
             JCheckBox c2 = new JCheckBox("Spending Plan");

@@ -1,10 +1,11 @@
 package ProjectPackage;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+/**
+ * Reminder class that inherits Task
+ * Author @Team 7
+ */
 
-public class Reminder extends Task{    //Isla
+public class Reminder extends Task{
 
     private Double reminderDate;
 
