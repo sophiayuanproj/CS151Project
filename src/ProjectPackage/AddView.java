@@ -298,9 +298,6 @@ public class AddView {
                 //testing TaskManager
                 tm.printArrayList();
                 System.out.println("Created new task");
-            } catch (NullPointerException nullPointerException) {
-                JTextArea error = new JTextArea("Please select a type");
-                JOptionPane.showMessageDialog(editTask, error);
             } catch (NumberFormatException numberFormatException) {
                 JTextArea error = new JTextArea("Please enter the date in the format mm.dd..");
                 JOptionPane.showMessageDialog(editTask, error);
